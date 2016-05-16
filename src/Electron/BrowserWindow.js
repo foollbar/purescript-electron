@@ -34,8 +34,8 @@ exports.webContents = function(browserWindow) {
   };
 }
 
-exports.openDevToolsImpl = function(webContents) {
-  return function(options) {
+exports.openDevToolsImpl = function(options) {
+  return function(webContents) {
     return function() {
       webContents.openDevTools(options);
       return {};

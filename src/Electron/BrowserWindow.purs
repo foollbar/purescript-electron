@@ -72,14 +72,14 @@ foreign import webContents :: forall eff
 -- |
 -- | [Official Electron documentation](http://electron.atom.io/docs/all/#webcontents-opendevtools-options)
 openDevTools :: forall eff
-   . WebContents
-  -> DevToolOptions
+   . DevToolOptions
+  -> WebContents
   -> Eff (electron :: ELECTRON | eff) Unit
-openDevTools wc = encodeOptions >>> openDevToolsImpl wc
+openDevTools opts wc = openDevToolsImpl (encodeOptions opts) wc
 
 foreign import openDevToolsImpl :: forall eff
-   . WebContents
-  -> Json
+   . Json
+  -> WebContents
   -> Eff (electron :: ELECTRON | eff) Unit
 
 data DevToolOption
